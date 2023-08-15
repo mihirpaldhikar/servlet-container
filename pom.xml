@@ -57,4 +57,11 @@
         </repository>
     </distributionManagement>
 
+    <scm>
+        <url>https://github.com/mihirpaldhikar/servlet-container.git</url>
+        <connection>scm:git:https://github.com/mihirpaldhikar/servlet-container.git</connection>
+        <developerConnection>scm:git:https://github.com/mihirpaldhikar/servlet-container.git</developerConnection>
+        <tag>${project.version}</tag>
+    </scm>
+
 </project>
