@@ -16,7 +16,6 @@
 
 package com.mihirpaldhikar.servlet.container;
 
-import com.mihirpaldhikar.servlet.container.configs.ContainerConfig;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.WebResourceSet;

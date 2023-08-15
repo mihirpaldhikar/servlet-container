@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mihirpaldhikar.servlet.container.configs;
+package com.mihirpaldhikar.servlet.container;
 
 /**
  * Creates a configuration for the Servlet Container.
