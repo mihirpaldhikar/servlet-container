@@ -32,6 +32,14 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <id>mihirpaldhikar</id>
+            <name>Mihir Paldhikar</name>
+            <email>imihirpaldhikar@gmail.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
