@@ -24,6 +24,12 @@
     <groupId>com.mihirpaldhikar</groupId>
     <artifactId>servlet-container</artifactId>
     <version>1.0.0</version>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>
+        Creates a Container for running Servlets.
+    </description>
+    <url>https://github.com/mihirpaldhikar/servlet-container</url>
+    <packaging>jar</packaging>
 
     <licenses>
         <license>
