@@ -16,7 +16,7 @@
 
 package com.mihirpaldhikar.servlet.container;
 
-import com.mihirpaldhikar.servlet.container.configs.ServletContainerConfig;
+import com.mihirpaldhikar.servlet.container.configs.ContainerConfig;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.WebResourceSet;
@@ -40,17 +40,17 @@ import java.nio.file.Path;
  * @since 1.0.0
  */
 public class ServletContainer implements Container {
-    private final ServletContainerConfig serverConfig;
+    private final ContainerConfig containerConfig;
 
     /**
      * Creates an instance of Servlet Container from the Container Config.
      *
-     * @param serverConfig Servlet Configuration to run Container.
+     * @param containerConfig Servlet Configuration to run Container.
      * @see Container
      * @since 1.0.0
      */
-    public ServletContainer(ServletContainerConfig serverConfig) {
-        this.serverConfig = serverConfig;
+    public ServletContainer(ContainerConfig containerConfig) {
+        this.containerConfig = containerConfig;
     }
 
     /**
@@ -88,27 +88,27 @@ public class ServletContainer implements Container {
         try {
             Tomcat tomcat = new Tomcat();
             Connector connector = new Connector();
-            File root = getRoot(serverConfig.className());
+            File root = getRoot(containerConfig.className());
             Path tempPath = Files.createTempDirectory("tomcat-base-directory");
 
             tomcat.setBaseDir(tempPath.toString());
-            connector.setPort(serverConfig.port());
+            connector.setPort(containerConfig.port());
 
             System.setProperty("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE", "true");
-            File webContentFolder = new File(root.getAbsolutePath(), serverConfig.sourceDirectoryPath());
+            File webContentFolder = new File(root.getAbsolutePath(), containerConfig.sourceDirectoryPath());
 
             if (!webContentFolder.exists()) {
                 webContentFolder = Files.createTempDirectory("default-base-directory").toFile();
             }
 
             StandardContext context = (StandardContext) tomcat.addWebapp("", webContentFolder.getAbsolutePath());
-            context.setParentClassLoader(Class.forName(serverConfig.className()).getClassLoader());
+            context.setParentClassLoader(Class.forName(containerConfig.className()).getClassLoader());
 
             WebResourceRoot resources = getWebResourceRoot(root, context);
             context.setResources(resources);
 
 
-            System.out.println("Server Started On http://localhost:" + serverConfig.port());
+            System.out.println("Server Started On http://localhost:" + containerConfig.port());
 
             tomcat.getService().addConnector(connector);
             tomcat.start();

@@ -25,5 +25,5 @@ package com.mihirpaldhikar.servlet.container.configs;
  * @author Mihir Paldhikar
  * @since 1.0.0
  */
-public record ServletContainerConfig(int port, String className, String sourceDirectoryPath) {
+public record ContainerConfig(int port, String className, String sourceDirectoryPath) {
 }
